@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1461981934 source:c:\users\win7\desktop\tp2-abm\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1461981266 c:\users\win7\desktop\tp2-abm\funciones.h
+
+1461981509 source:c:\users\win7\desktop\tp2-abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1462553202 source:c:\users\win7\desktop\tps laboratorio\tp2-abm\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1461981266 c:\users\win7\desktop\tps laboratorio\tp2-abm\funciones.h
+
+1461981509 source:c:\users\win7\desktop\tps laboratorio\tp2-abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

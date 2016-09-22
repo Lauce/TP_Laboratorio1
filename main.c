@@ -1,201 +1,125 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funciones.h"
+#include <string.h>
+#define C 20
+
+
+typedef struct
+{
+    char nombre[50];
+    int edad;
+    int dni;
+    int estado;
+
+} ePersona;
+
 
 
 
 int main()
 {
-    char seguir = 's';
+
+    ePersona unaPersona [C];
+    inicializarVec(unaPersona,C);
     int opcion;
-    float numero1;
-    float numero2;
-    float resultado;
-    float flag1 = 0;
-    float flag2 = 0;
+    char seguir;
+    int flagCase=0;
+    int i;
+    int indiceLibre;
 
     do
     {
-        system("cls");
-        printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        printf("\n\n        1   Ingresar 1er operando (%.2f)\n",numero1);
-        printf("        2   Ingresar 2do operando (%.2f)\n",numero2);
-        printf("        3   Sumar (A+B)\n");
-        printf("        4   Restar (A-B)\n");
-        printf("        5   Division (A/B)\n");
-        printf("        6   Multiplicacion (A*B)\n");
-        printf("        7   Factorial (%0.f)\n",numero1);
-        printf("        8   Calcular todas las operaciones\n");
-        printf("        9   Salir\n\n");
-        printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
-        printf("\n Elija una opcion: \n");
+
+        printf("\n\t**************************************************************\n");
+        printf("\t*                    MENU DE OPCIONES                        *\n");
+        printf("\t**************************************************************\n");
+        printf("\t*                                                            *\n");
+        printf("\t*                                                            *\n");
+        printf("\t*           1-CARGAR DATOS PERSONALES                        *\n");
+        printf("\t*                                                            *\n");
+        printf("\t*           2-BORRAR REGISTRO DE DATOS PERSONALES            *\n");
+        printf("\t*                                                            *\n");
+        printf("\t*           3-LISTAR POR NOMBRE                              *\n");
+        printf("\t*                                                            *\n");
+        printf("\t*           4-GRAFICO DE EDADES                              *\n");
+        printf("\t*                                                            *\n");
+        printf("\t*           5-SALIR                                          *\n");
+        printf("\t*                                                            *\n");
+        printf("\t**************************************************************\n");
+        printf("\t**************************************************************\n");
+
+       /* for(i=0;i<C;i++) //comprobar datos cargados
+        {
+           printf("%d",unaPersona[i].estado);
+        }*/
+
+
+        printf("\nIngrese una opcion: \n");
         scanf("%d",&opcion);
-
 
         switch(opcion)
         {
-        case 1:
-            printf("Ingrese un numero: \n");
-            scanf("%f",&numero1);
+        case 1: //alta
 
-            flag1 = 1;
-
-
-            break;
-        case 2:
-            printf("Ingrese otro numero: \n");
-
-            scanf("%f",&numero2);
-
-            flag2 = 1;
-
-            break;
-
-        case 3:
-            if(flag1==1 && flag2==1)
+            if(revisarEstado(unaPersona,C, &indiceLibre)==1)
             {
-                resultado = sumarNumeros(numero1, numero2);
-                printf("la suma es %.2f\n",resultado);
-
+                cargarAlta(unaPersona, C, indiceLibre);
             }
             else
             {
-                printf("Error, debe ingresar otro numero para operar\n");
+                printf("No hay espacio suficiente para cargar datos, contacte al administrador\n");
             }
+
 
             break;
 
-        case 4:
-            if(flag1==1 && flag2==1)
-            {
-                resultado = restarNumeros(numero1, numero2);
-                printf("La resta es %.2f\n",resultado);
-            }
-            else
-            {
-                printf("Error, debe ingresar numeros para operar\n");
-            }
+        case 2: //borrar
+
+
+            borrarDatos(unaPersona,C);
+
 
             break;
 
-        case 5:
+        case 3: //listar
 
-
-
-            if(flag1==1 && flag2==1)
-            {
-                resultado = dividirNumeros(numero1,numero2);
-                printf("La division es %.2f\n",resultado);
-            }
-            else
-            {
-                printf("Error, ingrese otro numero para realizar la operacion\n");
-            }
+            ordenarNombre(unaPersona,C);
 
             break;
 
 
-        case 6:
-            if(flag1==1 && flag2==1)
-            {
-                resultado = multiplicarNumeros(numero1, numero2);
-                printf("El producto es %.2f\n",resultado);
-            }
-            else
-            {
-                printf("ingrese el numero en la opcion 1\n");
-            }
-            break;
+        case 4://graficar
 
-        case 7:
-            if(flag1==1)
-            {
-                resultado = factorial(numero1);
-                printf("El factorial de la parte entera del primer operando (%.2f) es %.0f\n", numero1, resultado);
-            }
-            else
-            {
-                printf("Ingrese el numero en la opcion 1 del menu\n");
-            }
+            graficoEdad(unaPersona,C);
+
             break;
 
 
-        case 8:
-            if(flag1==1 && flag2==1)
-            {
-                resultado = sumarNumeros(numero1, numero2);
-                printf("la suma es %.2f\n",resultado);
+        case 5://salir
 
-                resultado= restarNumeros(numero1, numero2);
-                printf("La resta es %.2f\n",resultado);
-
-                resultado = dividirNumeros(numero1,numero2);
-
-
-                if (numero2 == 0)
-                {
-                    printf("Error, no se puede dividir por cero\n");
-
-                }
-                else
-                {
-                    printf("La division es %.2f\n",resultado);
-                }
-
-
-                resultado = multiplicarNumeros(numero1, numero2);
-                printf("El producto es %.2f\n",resultado);
-
-                resultado = factorial(numero1);
-                printf("El factorial de la parte entera del primer operando (%.2f) es %.0f\n",numero1, resultado);
-
-
-            }
-            else
-            {
-                printf("Ingrese el segundo numero para realizar todas las operaraciones\n");
-            }
-            break;
-
-
-        case 9:
-            printf("desear continuar? Ingrese S o N\n");
+            printf("Desea continuar?: S / N");
             fflush(stdin);
-
             scanf("%c",&seguir);
-
             break;
 
-
-        default: //si se ingresa cualguier letra o numero diferente al menu, imprime el sigte texto.
+        default:
             printf("Ingrese una de las opciones del menu \n");
+            system("pause");
 
 
         }
-
-        fflush( stdin );
+        fflush(stdin);
         system("pause");
+        system("cls");
 
     }
-    while (seguir =='s');
-
-
+    while(opcion!=5);
 
 
 
     return 0;
 
 
+
 }
-
-
-
-
-
-
-
-
-
