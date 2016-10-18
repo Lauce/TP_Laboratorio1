@@ -1,125 +1,102 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define C 20
+#include <conio.h>
+#include <ctype.h>
 
-
-typedef struct
-{
-    char nombre[50];
-    int edad;
-    int dni;
-    int estado;
-
-} ePersona;
+#include "Xfiles.h"
+#include "Get.h"
+#define QTY 5
 
 
 
 
 int main()
 {
+    eMovie movie [QTY];
 
-    ePersona unaPersona [C];
-    inicializarVec(unaPersona,C);
-    int opcion;
-    char seguir;
-    int flagCase=0;
-    int i;
-    int indiceLibre;
-
-    do
+    initStatus(movie,QTY,0);
+    if(cargarDesdeArchivo(movie))//==1
     {
+        printf("Se ha creado el archivo\n");
+    }
+    else
+    {
+        printf("Los archivos han sido cargados\n");
+    }
+    //system("pause");
+
+    int option;
+    char saveChange = 'S';
+    char listMovie[50]={"lista de peliculas.html"};
+
+    //0 es vacio
+   // int i;
 
 
-        printf("\n\t**************************************************************\n");
-        printf("\t*                    MENU DE OPCIONES                        *\n");
-        printf("\t**************************************************************\n");
-        printf("\t*                                                            *\n");
-        printf("\t*                                                            *\n");
-        printf("\t*           1-CARGAR DATOS PERSONALES                        *\n");
-        printf("\t*                                                            *\n");
-        printf("\t*           2-BORRAR REGISTRO DE DATOS PERSONALES            *\n");
-        printf("\t*                                                            *\n");
-        printf("\t*           3-LISTAR POR NOMBRE                              *\n");
-        printf("\t*                                                            *\n");
-        printf("\t*           4-GRAFICO DE EDADES                              *\n");
-        printf("\t*                                                            *\n");
-        printf("\t*           5-SALIR                                          *\n");
-        printf("\t*                                                            *\n");
-        printf("\t**************************************************************\n");
-        printf("\t**************************************************************\n");
+    while(option!=5)
+    {
+//        for(i=0; i<QTY; i++)
+//        {
+//            printf("%d %d status\n",i,movie[i].status);
+//        }
+        system("cls");
+        option=getInt("\n 1- Agregar pelicula\n 2- Borrar pelicula\n 3- Modificar pelicula\n 4- Web pelicula\n 5- Salir\n" );
 
-       /* for(i=0;i<C;i++) //comprobar datos cargados
+        switch(option)
         {
-           printf("%d",unaPersona[i].estado);
-        }*/
+        case 1: //agregar pelicula
 
-
-        printf("\nIngrese una opcion: \n");
-        scanf("%d",&opcion);
-
-        switch(opcion)
-        {
-        case 1: //alta
-
-            if(revisarEstado(unaPersona,C, &indiceLibre)==1)
-            {
-                cargarAlta(unaPersona, C, indiceLibre);
-            }
-            else
-            {
-                printf("No hay espacio suficiente para cargar datos, contacte al administrador\n");
-            }
-
-
+            addMovie(movie,QTY);
             break;
 
-        case 2: //borrar
+        case 2://borrar pelicula
 
-
-            borrarDatos(unaPersona,C);
-
-
+            deleteData(movie,QTY);
             break;
 
-        case 3: //listar
-
-            ordenarNombre(unaPersona,C);
-
+        case 3://modificar pelicula
+            crearTxt(movie);
+            modify(movie,QTY);
             break;
 
+        case 4://generar web
 
-        case 4://graficar
+            //validar antes si hay peliculas cargadas
 
-            graficoEdad(unaPersona,C);
+              generarHtml( movie,listMovie);
 
             break;
-
 
         case 5://salir
+        printf("\nAntes de salir debera guardar los cambios: S / N ?: ");
+				saveChange = tolower(getche());
 
-            printf("Desea continuar?: S / N");
-            fflush(stdin);
-            scanf("%c",&seguir);
+				if(saveChange == 's')
+				{
+					if(guardarEnArchivo(movie)==-1)
+					{
+						printf("\nNo se pudo abrir el archivo\n");
+					}
+					else
+					{
+						printf("\nDatos guardados\n");
+					}
+				}
+
+				saveChange='n';
+				break;
+
             break;
-
         default:
-            printf("Ingrese una de las opciones del menu \n");
-            system("pause");
-
+            printf("Ingrese opcion valida\n");
 
         }
-        fflush(stdin);
+
+        fflush( stdin );
         system("pause");
-        system("cls");
-
     }
-    while(opcion!=5);
-
 
 
     return 0;
-
-
-
 }

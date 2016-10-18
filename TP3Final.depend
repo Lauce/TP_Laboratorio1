@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1466615776 source:c:\users\win7\desktop\tps laboratorio\tp 3\tp3final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"Xfiles.h"
+	"Get.h"
+
+1464402780 c:\users\win7\desktop\tps laboratorio\tp 3\tp3final\xfiles.h
+
+1464403034 source:c:\users\win7\desktop\tps laboratorio\tp 3\tp3final\xfiles.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"Get.h"
+	"Xfiles.h"
+
+1464380125 source:c:\users\win7\desktop\tps laboratorio\tp 3\tp3final\get.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Get.h"
+
+1464380237 c:\users\win7\desktop\tps laboratorio\tp 3\tp3final\get.h
+
+1464380126 source:c:\users\poni poponi\desktop\tps laboratorio\tp3final\get.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Get.h"
+
+1464380238 c:\users\poni poponi\desktop\tps laboratorio\tp3final\get.h
+
+1476800002 source:c:\users\poni poponi\desktop\tps laboratorio\tp3final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"Xfiles.h"
+	"Get.h"
+
+1464402782 c:\users\poni poponi\desktop\tps laboratorio\tp3final\xfiles.h
+
+1476799918 source:c:\users\poni poponi\desktop\tps laboratorio\tp3final\xfiles.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"Get.h"
+	"Xfiles.h"
+

@@ -1,0 +1,6 @@
+Listado de peliculas
+
+
+Codigo   |   Titulo     |   Genero  |    Duracion  |  Descripcion |   Puntaje   | Poster
+     1   -   s                -  s                                                             -    111  -     s  -    11  -  sdsads
+   112   -   dsd              -  das                                                           -     35  -    sd  -    10  -  dsadsad
